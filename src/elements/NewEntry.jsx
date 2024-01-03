@@ -1,18 +1,18 @@
 import React from "react";
-import LegDay from "./LegDay";
-import ArmDay from "./ArmDay1"
 import RestDay from "./RestDay"
 import { addDoc, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore"
 import { workoutCollection, db } from "../firebase.js"
 import { formattedDate } from "./utils.jsx";
+import WorkoutDay from "./WorkoutDay.jsx";
 
 
 export default function NewEntry(){
 
-    // WORK ON PROPER DATA INPUT FOR EACH DAY(probably gonna have to be in each file)
     // Create data for exercise names
+    // Add way to input exercise names instead of generic name(prob from a list of choices)
+    // Try to reduce all the repeat code
+    // Combine below createNewWorkOut functions to work whether arms or legs
     // maybe try to figure out using react router forms instead
-    // style
 
     async function createNewWorkOutLegs(formData) {
         const newWorkOut = {
@@ -53,9 +53,9 @@ export default function NewEntry(){
 
 
     if(date.getDay() === 1 || date.getDay() === 4){
-        return <LegDay submit={createNewWorkOutLegs}/>
+        return <WorkoutDay type="leg" submit={createNewWorkOutLegs}/>
     } else if (date.getDay() === 2 || (date.getDay() === 5)){
-        return <ArmDay submit={createNewWorkOutArms}/>
+        return <WorkoutDay type="arm" submit={createNewWorkOutArms}/>
     } else {
         return <RestDay submit={createNewWorkOutRest}/>
     }

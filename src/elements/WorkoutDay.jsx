@@ -24,6 +24,13 @@ export default function WorkoutDay({submit, type}){
 
     const navigate = useNavigate()
 
+    const everythingArray = [{Title: ["Squat","Back"],Name: {Name: "name1",Value: formData.name1},Exercise: [exercises.squatExercises,exercises.backExercises],Sets: [{SetReps: {Name: "reps1",Value: formData.reps1},SetWeight: {Name: "weight1",Value: formData.weight1}}, {SetReps: {Name: "reps2",Value: formData.reps2}, SetWeight: {Name: "weight2",Value: formData.weight2}},{SetReps: {Name: "reps3",Value: formData.reps3},SetWeight: {Name: "weight3",Value: formData.weight3}}]},
+    {Title: ["Lunge","Tricep"],Name: {Name: "name2",Value: formData.name2},Exercise: [exercises.lungeExercises,exercises.tricepExercises],Sets: [{SetReps: {Name: "reps4",Value: formData.reps4},SetWeight: {Name: "weight4",Value: formData.weight4}}, {SetReps: {Name: "reps5",Value: formData.reps5}, SetWeight: {Name: "weight5",Value: formData.weight5}},{SetReps: {Name: "reps6",Value: formData.reps6},SetWeight: {Name: "weight6",Value: formData.weight6}}]},
+    {Title: ["Calf Raise","Bicep"],Name: {Name: "name3",Value: formData.name3},Exercise: [exercises.calfRaiseExercises,exercises.bicepExercises],Sets: [{SetReps: {Name: "reps7",Value: formData.reps7},SetWeight: {Name: "weight7",Value: formData.weight7}}, {SetReps: {Name: "reps8",Value: formData.reps8}, SetWeight: {Name: "weight8",Value: formData.weight8}},{SetReps: {Name: "reps9",Value: formData.reps9},SetWeight: {Name: "weight9",Value: formData.weight9}}]},
+    {Title: ["Hip Thrust","Chest"],Name: {Name: "name4",Value: formData.name4},Exercise: [exercises.hipThrustExercises,exercises.chestExercises],Sets: [{SetReps: {Name: "reps10",Value: formData.reps10},SetWeight: {Name: "weight10",Value: formData.weight10}}, {SetReps: {Name: "reps11",Value: formData.reps11}, SetWeight: {Name: "weight11",Value: formData.weight11}},{SetReps: {Name: "reps12",Value: formData.reps12},SetWeight: {Name: "weight12",Value: formData.weight12}}]},
+    {Title: ["Ab","Shoulder"],Name: {Name: "name5",Value: formData.name5},Exercise: [exercises.abExercises,exercises.shoulderExercises],Sets: [{SetReps: {Name: "reps13",Value: formData.reps13},SetWeight: {Name: "weight13",Value: formData.weight13}}, {SetReps: {Name: "reps14",Value: formData.reps14}, SetWeight: {Name: "weight14",Value: formData.weight14}},{SetReps: {Name: "reps15",Value: formData.reps15},SetWeight: {Name: "weight15",Value: formData.weight15}}]}]
+    
+
     function handleChange(e){
         const {name, value} = e.target
     
@@ -41,124 +48,32 @@ export default function WorkoutDay({submit, type}){
     navigate("/")
     }
 
+    const inputForms = everythingArray.map((list) => {
+        return (
+        <div className="exercise-block">
+            <h1>{type === "leg" ? list.Title[0] : list.Title[1]} Exercise</h1>
+            <select id={list.Name.Name} value={list.Name.Value} name={list.Name.Name} onChange={handleChange} className="selector" required>
+                 <option value="">--Choose--</option>
+                 {type === "leg" ? list.Exercise[0].map(exercise => <option value={exercise}>{exercise}</option>) : 
+                 list.Exercise[1].map(exercise => <option value={exercise}>{exercise}</option>)}
+             </select>
+             {list.Sets.map((set,index) => {
+                return (
+                    <>
+                        <h2>Set {index + 1}:</h2>
+                        <label htmlFor={set.SetReps.Name}>Reps:</label>
+                        <input name={set.SetReps.Name} id={set.SetReps.Name} value={set.SetReps.Value} onChange={handleChange} required></input>
+                        <label htmlFor={set.SetWeight.Name}>Weight:</label>
+                        <input name={set.SetWeight.Name} id={set.SetWeight.Name} value={set.SetWeight.Value} onChange={handleChange} required></input>
+                    </>
+                )
+             })}
+        </div>)
+    })
 
     return (
     <form className="workout-form" onSubmit={handleSubmit}>
-        <div className="exercise-block">
-            <h1>{type === "leg" ? "Squat" : "Back"} Exercise</h1>
-            <select id="name1" value={formData.name1} name="name1" onChange={handleChange} className="selector" required>
-                <option value="">--Choose--</option>
-                {type === "leg" ? exercises.squatExercises.map(exercise => <option value={exercise}>{exercise}</option>) : 
-                exercises.backExercises.map(exercise => <option value={exercise}>{exercise}</option>)}
-            </select>
-            <h2>Set 1:</h2>
-            <label htmlFor="reps1">Reps:</label>
-            <input name="reps1" id="reps1" value={formData.reps1} onChange={handleChange} required></input>
-            <label htmlFor="weight1">Weight:</label>
-            <input name="weight1" id="weight1" value={formData.weight1} onChange={handleChange} required></input>
-            <h2>Set 2:</h2>
-            <label htmlFor="reps2">Reps:</label>
-            <input name="reps2" id="reps2" value={formData.reps2} onChange={handleChange} required></input>
-            <label htmlFor="weight2">Weight:</label>
-            <input name="weight2" id="weight2" value={formData.weight2} onChange={handleChange} required></input>
-            <h2>Set 3:</h2>
-            <label htmlFor="reps3">Reps:</label>
-            <input name="reps3" id="reps3" value={formData.reps3} onChange={handleChange} required></input>
-            <label htmlFor="weight3">Weight:</label>
-            <input name="weight3" id="weight3" value={formData.weight3} onChange={handleChange} required></input>
-        </div>
-        <div className="exercise-block">
-            <h1>{type === "leg" ? "Lunge" : "Tricep"} Exercise</h1>
-            <select id="name2" value={formData.name2} name="name2" onChange={handleChange} className="selector" required>
-                <option value="">--Choose--</option>
-                {type === "leg" ? exercises.lungeExercises.map(exercise => <option value={exercise}>{exercise}</option>) : 
-                exercises.tricepExercises.map(exercise => <option value={exercise}>{exercise}</option>)}
-            </select>
-            <h2>Set 1:</h2>
-            <label htmlFor="reps4">Reps:</label>
-            <input name="reps4" id="reps4" value={formData.reps4} onChange={handleChange} required></input>
-            <label htmlFor="weight4">Weight:</label>
-            <input name="weight4" id="weight4" value={formData.weight4} onChange={handleChange} required></input>
-            <h2>Set 2:</h2>
-            <label htmlFor="reps5">Reps:</label>
-            <input name="reps5" id="reps5" value={formData.reps5} onChange={handleChange} required></input>
-            <label htmlFor="weight5">Weight:</label>
-            <input name="weight5" id="weight5" value={formData.weight5} onChange={handleChange} required></input>
-            <h2>Set 3:</h2>
-            <label htmlFor="reps6">Reps:</label>
-            <input name="reps6" id="reps6" value={formData.reps6} onChange={handleChange} required></input>
-            <label htmlFor="weight6">Weight:</label>
-            <input name="weight6" id="weight6" value={formData.weight6} onChange={handleChange} required></input>
-        </div>
-        <div className="exercise-block">
-            <h1>{type === "leg" ? "Calf Raise" : "Bicep"} Exercise</h1>
-            <select id="name3" value={formData.name3} name="name3" onChange={handleChange} className="selector" required>
-                <option value="">--Choose--</option>
-                {type === "leg" ? exercises.calfRaiseExercises.map(exercise => <option value={exercise}>{exercise}</option>) : 
-                exercises.bicepExercises.map(exercise => <option value={exercise}>{exercise}</option>)}
-            </select>
-            <h2>Set 1:</h2>
-            <label htmlFor="reps7">Reps:</label>
-            <input name="reps7" id="reps7" value={formData.reps7} onChange={handleChange} required></input>
-            <label htmlFor="weight7">Weight:</label>
-            <input name="weight7" id="weight7" value={formData.weight7} onChange={handleChange} required></input>
-            <h2>Set 2:</h2>
-            <label htmlFor="reps8">Reps:</label>
-            <input name="reps8" id="reps8" value={formData.reps8} onChange={handleChange} required></input>
-            <label htmlFor="weight8">Weight:</label>
-            <input name="weight8" id="weight8" value={formData.weight8} onChange={handleChange} required></input>
-            <h2>Set 3:</h2>
-            <label htmlFor="reps9">Reps:</label>
-            <input name="reps9" id="reps9" value={formData.reps9} onChange={handleChange} required></input>
-            <label htmlFor="weight9">Weight:</label>
-            <input name="weight9" id="weight9" value={formData.weight9} onChange={handleChange} required></input>
-        </div>
-        <div className="exercise-block">
-            <h1>{type === "leg" ? "Hip Thrust" : "Chest"} Exercise</h1>
-            <select id="name4" value={formData.name4} name="name4" onChange={handleChange} className="selector" required>
-                <option value="">--Choose--</option>
-                {type === "leg" ? exercises.hipThrustExercises.map(exercise => <option value={exercise}>{exercise}</option>) : 
-                exercises.chestExercises.map(exercise => <option value={exercise}>{exercise}</option>)}
-            </select>
-            <h2>Set 1:</h2>
-            <label htmlFor="reps10">Reps:</label>
-            <input name="reps10" id="reps10" value={formData.reps10} onChange={handleChange} required></input>
-            <label htmlFor="weight10">Weight:</label>
-            <input name="weight10" id="weight10" value={formData.weight10} onChange={handleChange} required></input>
-            <h2>Set 2:</h2>
-            <label htmlFor="reps11">Reps:</label>
-            <input name="reps11" id="reps11" value={formData.reps11} onChange={handleChange} required></input>
-            <label htmlFor="weight11">Weight:</label>
-            <input name="weight11" id="weight11" value={formData.weight11} onChange={handleChange} required></input>
-            <h2>Set 3:</h2>
-            <label htmlFor="reps12">Reps:</label>
-            <input name="reps12" id="reps12" value={formData.reps12} onChange={handleChange} required></input>
-            <label htmlFor="weight12">Weight:</label>
-            <input name="weight12" id="weight12" value={formData.weight12} onChange={handleChange} required></input>
-        </div>
-        <div className="exercise-block">
-            <h1>{type === "leg" ? "Ab" : "Shoulder"} Exercise</h1>
-            <select id="name5" value={formData.name5} name="name5" onChange={handleChange} className="selector" required>
-                <option value="">--Choose--</option>
-                {type === "leg" ? exercises.abExercises.map(exercise => <option value={exercise}>{exercise}</option>) : 
-                exercises.shoulderExercises.map(exercise => <option value={exercise}>{exercise}</option>)}
-            </select>
-            <h2>Set 1:</h2>
-            <label htmlFor="reps13">Reps:</label>
-            <input name="reps13" id="reps13" value={formData.reps13} onChange={handleChange} required></input>
-            <label htmlFor="weight13">Weight:</label>
-            <input name="weight13" id="weight13" value={formData.weight13} onChange={handleChange} required></input>
-            <h2>Set 2:</h2>
-            <label htmlFor="reps14">Reps:</label>
-            <input name="reps14" id="reps14" value={formData.reps14} onChange={handleChange} required></input>
-            <label htmlFor="weight14">Weight:</label>
-            <input name="weight14" id="weight14" value={formData.weight14} onChange={handleChange} required></input>
-            <h2>Set 3:</h2>
-            <label htmlFor="reps15">Reps:</label>
-            <input name="reps15" id="reps15" value={formData.reps15} onChange={handleChange} required></input>
-            <label htmlFor="weight15">Weight:</label>
-            <input name="weight15" id="weight15" value={formData.weight15} onChange={handleChange} required></input>
-        </div>
+        {inputForms}
         <button className="submit-btn">Submit</button>
     </form>
     )

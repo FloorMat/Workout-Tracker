@@ -8,7 +8,7 @@ import WorkoutDay from "./WorkoutDay.jsx";
 
 export default function NewEntry(){
 
-    // Try to reduce all the repeat code
+
     // maybe try to figure out using react router forms instead
 
     async function createNewWorkOut(formData) {

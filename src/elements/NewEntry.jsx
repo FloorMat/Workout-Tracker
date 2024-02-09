@@ -2,7 +2,7 @@ import React from "react";
 import RestDay from "./RestDay"
 import { addDoc, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore"
 import { workoutCollection, db } from "../firebase.js"
-import { formattedDate } from "./utils.jsx";
+import { getFormattedDate } from "./utils.jsx";
 import WorkoutDay from "./WorkoutDay.jsx";
 
 
@@ -21,7 +21,7 @@ export default function NewEntry(){
                 {Exercise4: {Name:formData.name4, Set1: {Reps:formData.reps10, Weight: formData.weight10}, Set2: {Reps:formData.reps11, Weight: formData.weight11}, Set3: {Reps:formData.reps12, Weight: formData.weight12}}},
                 {Exercise5: {Name:formData.name5, Set1: {Reps:formData.reps13, Weight: formData.weight13}, Set2: {Reps:formData.reps14, Weight: formData.weight14}, Set3: {Reps:formData.reps15, Weight: formData.weight15}}}
             ],
-            Date: formattedDate
+            Date: getFormattedDate()
         }
         await addDoc(workoutCollection, newWorkOut)
     }
@@ -29,7 +29,7 @@ export default function NewEntry(){
     async function createNewWorkOutRest(formData){
         const newWorkOut = {
             createdAt: Date.now(),
-            Date: formattedDate,
+            Date: getFormattedDate(),
             Rest: formData.rest
         }
         await addDoc(workoutCollection, newWorkOut)

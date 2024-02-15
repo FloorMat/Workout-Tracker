@@ -90,9 +90,9 @@ export default function WorkoutDay({submit, type}){
                     <>
                         <h2>Set {index + 1}:</h2>
                         <label htmlFor={set.SetReps.Name}>Reps:</label>
-                        <input name={set.SetReps.Name} id={set.SetReps.Name} value={set.SetReps.Value} onChange={handleChange} required></input>
+                        <input name={set.SetReps.Name} id={set.SetReps.Name} value={set.SetReps.Value} onChange={handleChange} required autoComplete="off"></input>
                         <label htmlFor={set.SetWeight.Name}>Weight:</label>
-                        <input name={set.SetWeight.Name} id={set.SetWeight.Name} value={set.SetWeight.Value} onChange={handleChange} required></input>
+                        <input name={set.SetWeight.Name} id={set.SetWeight.Name} value={set.SetWeight.Value} onChange={handleChange} required autoComplete="off"></input>
                     </>
                 )
              })}

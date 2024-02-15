@@ -36,7 +36,6 @@ export default function Home(){
         ( 
         <div className="workout">
             <h2>{workout.Date}</h2>
-            {console.log(workout.Exercises)}
             {workout.Exercises.map(object => {
                 const exercise = object[Object.keys(object)[0]]
                 return (

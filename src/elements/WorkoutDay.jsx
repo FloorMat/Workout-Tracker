@@ -41,11 +41,39 @@ export default function WorkoutDay({submit, type}){
           }
         })
       }
+
+    function validation(){
+        try{
+            everythingArray.forEach(list => {
+                if (list.Exercise[0].includes(list.Name.Value) === false && list.Exercise[1].includes(list.Name.Value) === false){
+                    throw Error
+            }
+            })
+
+            let results = Object.values(formData)
+            results.forEach(result => {
+                if (result === ""){
+                    throw Error
+                }
+            })
+            
+        } catch (e){
+            if (e === Error){
+                return false
+            }
+        }
+            
+        return true
+    }
     
     function handleSubmit(e){
     e.preventDefault()
-    submit(formData)
-    navigate("/")
+    if (validation()){
+        submit(formData)
+        navigate("/")
+    } else {
+        navigate("/fuckyou")
+    }
     }
 
     const inputForms = everythingArray.map((list) => {
@@ -53,7 +81,7 @@ export default function WorkoutDay({submit, type}){
         <div className="exercise-block">
             <h1>{type === "leg" ? list.Title[0] : list.Title[1]} Exercise</h1>
             <select id={list.Name.Name} value={list.Name.Value} name={list.Name.Name} onChange={handleChange} className="selector" required>
-                 <option value="">--Choose--</option>
+                 <option value="" disabled>--Choose--</option>
                  {type === "leg" ? list.Exercise[0].map(exercise => <option value={exercise}>{exercise}</option>) : 
                  list.Exercise[1].map(exercise => <option value={exercise}>{exercise}</option>)}
              </select>

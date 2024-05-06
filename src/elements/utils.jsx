@@ -14,11 +14,11 @@ export const exercises = {squatExercises: ["Body Weight Squats","Weighted Squats
 lungeExercises: ["Regular Lunges","Weighted Lunges","Bulgarian Lunges"],
 calfRaiseExercises: ["Body Weight Calf Raises", "Weighted Calf Raises", "Elevated Calf Raises"],
 hipThrustExercises: ["Hip Thrusts on da chair","Weighted Hip Thrusts"],
-abExercises: ["Plank","Hollow Body Holds","Leg Raises","Hanging Leg Raises","L Sits","Hanging L Sits"],
+abExercises: ["Plank","Hollow Body Holds","Leg Raises","Hanging Leg Raises","L Sits","Hanging L Sits","Power Overs","Upper Circle Crunches"],
 backExercises: ["Pull-ups","Inverted Body Weight Rows","One Arm Dumbbell Pulls","Bent Over Dumbbell Rows"],
 tricepExercises:["Parallel Dumbbell Bench Presses","Skull Crushers","Decline Pushups","Dips","Overhead Dumbbell Tricep Extension","Incline Parallel Dumbbell Bench Presses"],
 bicepExercises:["Curls","Hammer Curls","Chin-ups"],
-chestExercises:["Wide Arm Pushups","Decline Pushups","Dips","Fly Presses","Dumbbell Bench Presses","Incline Dumbbell Bench Presses"],
+chestExercises:["Wide Arm Pushups","Decline Pushups","Dips","Fly Presses","Dumbbell Bench Presses","Incline Dumbbell Bench Presses","Decline Dumbbell Bench Press"],
 shoulderExercises:["Pike Pushups","Lateral Raises","Overhead Raises","Front Raises"]}
 
 

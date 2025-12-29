@@ -11,10 +11,10 @@ export function getFormattedDate(){
 }
 
 export const exercises = {squatExercises: ["Body Weight Squats","Weighted Squats","Pistol Squats","Bulgarian Split Squats"],
-lungeExercises: ["Regular Lunges","Weighted Lunges","Split Squats"],
+lungeExercises: ["Regular Lunges","Weighted Lunges","Split Squats","Good Mornings"],
 calfRaiseExercises: ["Body Weight Calf Raises", "Weighted Calf Raises", "Elevated Calf Raises"],
 hipThrustExercises: ["Hip Thrusts on da chair","Weighted Hip Thrusts"],
-abExercises: ["Plank","Hollow Body Holds","Leg Raises","Hanging Leg Raises","L Sits","Hanging L Sits","Power Overs","Decline Crunches", "Russian Twists"],
+abExercises: ["Plank","Hollow Body Holds","Leg Raises","Hanging Leg Raises","L Sits","Hanging L Sits","Power Overs","Decline Crunches", "Russian Twists","AB WHEEL"],
 backExercises: ["Pull-ups","Inverted Body Weight Rows","One Arm Dumbbell Pulls","Bent Over Dumbbell Rows"],
 tricepExercises:["Parallel Dumbbell Bench Presses","Skull Crushers","Decline Pushups","Dips","Overhead Dumbbell Tricep Extension","Incline Parallel Dumbbell Bench Presses"],
 bicepExercises:["Curls","Hammer Curls","Chin-ups","Cross Body Curls"],
